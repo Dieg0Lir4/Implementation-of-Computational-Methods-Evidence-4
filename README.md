@@ -2,6 +2,7 @@
 
 
 '''
+
 class Solution
 {
 public:
@@ -75,4 +76,5 @@ public:
         return water_trapped;
     }
 };
+
 '''
