@@ -15,6 +15,8 @@ Constraints:
 * The maximum number of bars is 20,000.
 * The maximum height of a bar is 100,000 units.
 
+Note: I change the constraint of maximum height of a bar to 5 units and the amount of bars to 100,000, with the purpose to make a better test field to see the power of parallem programing.
+
 
 I chose this problem not only because it is challenging but also highly relevant. It demonstrates how different spaces in the same map can have different results and how these differences can affect other spaces. For example, the problem illustrates how varying elevations can lead to different amounts of trapped water, similar to how real world terrains affect water accumulation. Additionally, this problem has various ways of solving it, making it a great test for parallel programming and sequential programming. 
 
@@ -40,8 +42,32 @@ For the implementation I decided to use Google Colab since it's a free cloud ser
 
 Here is the link to the google colab with my implementation: https://colab.research.google.com/drive/1uOyP-YfDH1NYUXzWE5uO0To_7b0UjXws?usp=s
 
-NOTE: Make sure that your google colab account still have quote to connect to a GPU
+For this implementation I made that the code 
 
+NOTE: Make sure that your google colab account still have quote to connect to a GPU
+NOTE: If you have a NVIDIA GPU, there is the code file in the repository if you want to try it locally
+
+
+## Test:
+
+In the google colab at the end of the notebook there is a part where the tests are, there are some arrays written directly into the code with the answer that should be printed.
+
+Here are the arrays with the answer expected
+
+* height = [0,1,0,2,1,0,1,3,2,1,2,1]
+* output = 6
+
+* height = [0,1,0,2,1,0,1,3,2,1,2,1]
+* output = 9
+
+* height = [2, 0, 2]
+* Output: 2
+
+* height = [3, 0, 1, 3, 0, 5]
+* Output: 8
+
+
+Have in mind that this test are only to show that the code works as expected, but due to the little amount of elements in the array there is no way to see the speed of parallem programming
 
 
 
