@@ -20,6 +20,8 @@ Note: I change the constraint of maximum height of a bar to 5 units and the amou
 
 I chose this problem not only because it is challenging but also highly relevant. It demonstrates how different spaces in the same map can have different results and how these differences can affect other spaces. For example, the problem illustrates how varying elevations can lead to different amounts of trapped water, similar to how real world terrains affect water accumulation. Additionally, this problem has various ways of solving it, making it a great test for parallel programming and sequential programming. 
 
+Link to the problem: https://leetcode.com/problems/trapping-rain-water/description/
+
 ## Models:
 
 Here are some diagrams of the problem:
@@ -67,25 +69,38 @@ Here are the arrays with the answer expected
 * Output: 8
 
 
-Have in mind that this test are only to show that the code works as expected, but due to the little amount of elements in the array there is no way to see the speed of parallem programming
+Have in mind that this test are only to show that the code works as expected, but due to the little amount of elements in the arrays there is no way to see the speed of parallem programming.
+
+LINK to the google colab: https://colab.research.google.com/drive/1uOyP-YfDH1NYUXzWE5uO0To_7b0UjXws?usp=sharing
+
+if that links is not working due to google colab's quote of time using GPU overuse try this one:
+https://colab.research.google.com/drive/16qEzjSuVciS4hQMqwpwMaHLHwj9nZFf9?usp=sharing
+
+if not able to use GPU use another account of google that hasn't use GPU.
+Also
 
 
 
+Analysis:
+
+Let's compare this solution with doing it by doing it sequentially with only one thread
 
 
 ```
-class Solution
-{
+%%writefile sequntial_trap_water.cpp
+#include <iostream>
+#include <vector>
+#include <chrono>
+#include <random>
+using namespace std;
+
+class Solution {
 public:
-    
     // Function to get the max height of the left wall
-    int maxLeftWall(vector<int> &height, int i)
-    {
+    int maxLeftWall(vector<int> &height, int i) {
         int max = height[i - 1];
-        for (int j = 0; j < i; ++j)
-        {
-            if (height[j] > max)
-            {
+        for (int j = 0; j < i; ++j) {
+            if (height[j] > max) {
                 max = height[j];
             }
         }
@@ -93,13 +108,10 @@ public:
     }
 
     // Function to get the max height of the right wall
-    int maxRightWall(vector<int> &height, int i)
-    {
+    int maxRightWall(vector<int> &height, int i) {
         int max = height[i + 1];
-        for (int j = i + 1; j < height.size(); ++j)
-        {
-            if (height[j] > max)
-            {
+        for (int j = i + 1; j < height.size(); ++j) {
+            if (height[j] > max) {
                 max = height[j];
             }
         }
@@ -107,14 +119,11 @@ public:
     }
 
     // Function to get the min height of the two walls
-    int min(int a, int b)
-    {
+    int min(int a, int b) {
         return a < b ? a : b;
     }
 
-    int trap(vector<int> &height)
-    {
-
+    int trap(vector<int> &height) {
         // Get the number of elements in the vector
         int n = height.size();
 
@@ -122,12 +131,10 @@ public:
         int water_trapped = 0;
 
         // Check if the at least space for two walls and space for water
-        if (n < 3)
-            return 0;
+        if (n < 3) return 0;
 
-        // Loop for each position expect first and last
-        for (int i = 1; i < n-1; ++i)
-        {
+        // Loop for each position except first and last
+        for (int i = 1; i < n-1; ++i) {
             // Call the function to get the height of its max right and left walls
             int leftWall = maxLeftWall(height, i);
             int rightWall = maxRightWall(height, i);
@@ -136,9 +143,8 @@ public:
             int minWall = min(leftWall, rightWall);
 
             // Calculate if the current wall is less than the minimum wall
-            if (height[i] < minWall)
-            {
-                // Add the difference between the minimum wall and the current wall 
+            if (height[i] < minWall) {
+                // Add the difference between the minimum wall and the current wall
                 // to the water trapped
                 water_trapped += minWall - height[i];
             }
@@ -148,3 +154,12 @@ public:
     }
 };
 ```
+
+this is code does the same as the parallem, but here the diference is that in only has one thread and to past to the next position it has to calculate their max bars and its water trapped. Meanwhile in parallem you have multiple threads doing different position at the same time. So seen by time complexity the sequential way has a time complexity of O(n^2), that is because the thread has a loop to past to every position and has a nexted loop to check every position to its left and right. Meanwhile thanks to parallem programing each thread only havt to worry about the loop to check every position to its left and right. Making it a time complexity of 0(n).
+
+Here is the link to the colab that have the sequntial code: https://colab.research.google.com/drive/1HzPf6cFma4sFE63JUJr9_timPwV7JOVv?usp=sharing
+
+When I did the comparison it took 432167 miliseconds (43 seconds) using the sequential mode and 32 miliseconds using parallem programing
+
+The approch use to solve this problems is not best for sequentialy, I use this approch to solve it in leetcode and eventhough it past all of the cases due that it took so much time leetcode rejected my solution. Thankfull due to how parallem programing works it makes using this approch way more efficient.
+
