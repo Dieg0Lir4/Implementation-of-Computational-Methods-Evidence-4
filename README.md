@@ -21,13 +21,15 @@ I chose this problem not only because it is challenging but also highly relevant
 ## Models:
 
 Here are some diagrams of the problem:
+
+![](https://github.com/Dieg0Lir4/Implementation-of-Computational-Methods-Evidence-4/blob/main/diagrama1.jpg)
+
 The topmost row in the diagram represents the array of 100,000 elements. For simplicity, only the first few elements are shown. The diagram shows how the array elements are divided among threads and blocks. Each block (indicated by blockIdx.x) contains 32 threads (indicated by threadIdx.x). Threads within each block are responsible for processing specific elements of the array. Each thread in a block has a unique index (threadIdx.x), ranging from 0 to 31 and each block has a unique index (blockIdx.x).
 For this solution you have an array of heights, and you want to compute the maximum height to the left and right of each element. This computation will be performed in parallel using CUDA.
 
+![](https://github.com/Dieg0Lir4/Implementation-of-Computational-Methods-Evidence-4/blob/main/diagrama2.jpg)
 
 The logic is quite simple. The array of heights is divided among multiple blocks and threads. Each thread is responsible for processing a specific element of the array. Each thread calculates its global index idx (a index in the problem’s array that only that thread has)
-
-
 
 The diagram helps visualize how the array elements are mapped to threads and blocks. Each thread processes a specific element of the array to compute the left and right maximums in parallel, to then calculate the water that can be trapped in it. By dividing the work among multiple threads and blocks we make this problem way faster,  since we don't have to wait for other spaces to finish calculating their bars and water trapped.  By this approach parallel programming does a better job in large arrays like the one with 100,000 elements in this problem. 
 
