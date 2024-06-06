@@ -44,7 +44,6 @@ For the implementation I decided to use Google Colab since it's a free cloud ser
 
 Here is the link to the google colab with my implementation: https://colab.research.google.com/drive/1uOyP-YfDH1NYUXzWE5uO0To_7b0UjXws?usp=s
 
-For this implementation I made that the code 
 
 NOTE: Make sure that your google colab account still have quote to connect to a GPU
 * Click on "Runtime" in the top menu.
