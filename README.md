@@ -4,7 +4,7 @@
 
 For this evidence, I chose the problem "Trapping Rain Water." In this challenge, the goal is to determine how much rainwater can be trapped given an array of non-negative integers representing an elevation map. Each element of the array corresponds to the height of a bar, and the width of each bar is assumed to be 1 unit. Visualizing this problem is crucial for understanding how rainwater can accumulate between the bars. Below is an image and example provided by LeetCode illustrating the problem:
 
-![https://github.com/Dieg0Lir4/Implementation-of-Computational-Methods-Evidence-4/blob/main/leetcodeExample.jpg]
+![](https://github.com/Dieg0Lir4/Implementation-of-Computational-Methods-Evidence-4/blob/main/leetcodeExample.jpg)
 
 Example:
 * Input: height = [0,1,0,2,1,0,1,3,2,1,2,1]
