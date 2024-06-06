@@ -47,6 +47,10 @@ Here is the link to the google colab with my implementation: https://colab.resea
 For this implementation I made that the code 
 
 NOTE: Make sure that your google colab account still have quote to connect to a GPU
+* Click on "Runtime" in the top menu.
+* Select "Change runtime type".
+* In the "Hardware accelerator" dropdown, select "GPU".
+
 NOTE: If you have a NVIDIA GPU, there is the code file in the repository if you want to try it locally
 
 
