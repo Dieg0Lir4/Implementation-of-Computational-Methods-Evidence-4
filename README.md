@@ -34,6 +34,15 @@ The logic is quite simple. The array of heights is divided among multiple blocks
 The diagram helps visualize how the array elements are mapped to threads and blocks. Each thread processes a specific element of the array to compute the left and right maximums in parallel, to then calculate the water that can be trapped in it. By dividing the work among multiple threads and blocks we make this problem way faster,  since we don't have to wait for other spaces to finish calculating their bars and water trapped.  By this approach parallel programming does a better job in large arrays like the one with 100,000 elements in this problem. 
 
 
+## Implementation:
+
+For the implementation I decided to use Google Colab since it's a free cloud service that provides GPU access and supports CUDA. That way there is no need to download and install cuda since Google Colab comes with several tools and libraries preinstalled, which include the necessary components for using CUDA, this allows you to write and execute CUDA code without needing to install CUDA manually and needing a NVIDIA GPU.
+
+Here is the link to the google colab with my implementation: https://colab.research.google.com/drive/1uOyP-YfDH1NYUXzWE5uO0To_7b0UjXws?usp=s
+
+NOTE: Make sure that your google colab account still have quote to connect to a GPU
+
+
 
 
 
